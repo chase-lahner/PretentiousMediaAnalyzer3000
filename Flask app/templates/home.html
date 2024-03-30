@@ -6,11 +6,70 @@
     <title>Foundation | Welcome</title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
   </head>
-  <Script>
-    function blurb(){
-      
+
+  <style>
+    .table-container{
+      display:flex;
+      justify-content: center;
+      flex-direction: column;
     }
-  </Script>
+
+    .hed{
+      text-align: center;
+      margin-right: 50px;
+    }
+
+    .outter{
+      display: flex;
+      flex-direction: row;
+    }
+
+    .card-container {
+        perspective: 1000px; /* Add perspective for 3D effect */
+        width: 192px;
+        height: 192px;
+        position: relative;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        transition: transform 2.6s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: rotateY(180deg); /* Flip on hover */
+    }
+
+    .card-front, .card-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden; /* Hide the backface of the card */
+    }
+
+    .card-front {
+        background-color: #3498db; /* Front face color */
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+    }
+
+    .card-back {
+        background-color: #2ecc71; /* Back face color */
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        transform: rotateY(180deg); /* Initially hidden */
+    }
+
+  </style>
   <body>
 
     <!-- Start Top Bar -->
@@ -36,13 +95,23 @@
         <h1>Our Blog : GET SONGS : "welcome to my page <a href='/get_songs'>get top_songs</a>" </h1>
       </div>
     </div>
-
+    <h1>MEET THE JUDGES</h1>
     <div class="row" id="content">
       <div class="medium-8 columns">
         <div class="blog-post">
           <h3>Pretentious Bot <small>3/6/2015</small></h3>
-          <img src="/static/ringo.png" style="width:192px;height:192px;">
-          <p>{{ myString }} </p>
+          <div class="outter">
+              <div class="card-container">
+                <div class="card">
+                    <div class="card-front">
+                      <img src="/static/ringo.png" style="width:192px;height:192px;"> 
+                    </div>
+                    <div class="card-back">
+                      <p>{{ myString }} </p>
+                    </div>
+                </div>
+              </div>
+          </div>
           <div class="callout">
             <ul class="menu simple">
               <li><a href="#">Author: Mike Mikers</a></li>
@@ -127,6 +196,70 @@
     <script>
       $(document).foundation();
     </script>
+
+    <div class="table-container">
+
+      <table>
+        <tr>
+          <!-- <td> -->
+            <h1 class="hed">Results</h1>
+          <!-- </td> -->
+        </tr>
+        <tr>
+          <td>
+            <div class="card-container">
+              <div class="card" id="flip-card">
+                  <div class="card-front">
+                    <img src="/static/ringo.png" style="width:192px;height:192px;"> 
+                  </div>
+                  <div class="card-back">
+                      COLTONS BACKEND {{ringoOutput}}
+                  </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="card-container">
+              <div class="card" id="flip-card">
+                  <div class="card-front">
+                    <img src="/static/nicePerson.png" style="width:192px;height:192px;">
+                  </div>
+                  <div class="card-back">
+                      COLTONS BACKEND {{nicePersonOutput}}
+                  </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="card-container">
+              <div class="card" id="flip-card">
+                  <div class="card-front">
+                    <img src="/static/ringo.png" style="width:192px;height:192px;"> 
+                  </div>
+                  <div class="card-back">
+                      COLTONS BACKEND {{batman}}
+                  </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="card-container">
+              <div class="card" id="flip-card">
+                  <div class="card-front">
+                    <img src="/static/nicePerson.png" style="width:192px;height:192px;">
+                  </div>
+                  <div class="card-back">
+                      COLTONS BACKEND {{pretentiousMan}}
+                  </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
   </body>
 </html>
 
