@@ -8,16 +8,61 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
       
     </head>
+    <style>
 
+/* CSS */
+div{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+button{
+  display: flex;
+  align-items: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+  font-size: 46px;
+  padding: 2.7em 3.4em 2.7em 3.1em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(0deg, #1ED760 0%, rgba(102,247,113,1) 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top: 580px;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+button:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+}
+
+button:active {
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}
+    </style>
     <script>
-        if (confirm("Can We Steal Your Spotify Data!")) {
-            window.location.href = '/ape';
-        } else {
-            alert("You canceled!");
-        }    
+        function spot(){
+            if (confirm("Can We Steal Your Spotify Data!"),1000000000000000) {
+                window.location.href = '/ape';
+            } else {
+                alert("You canceled!");
+            }    
+        }
     </script>
 
     <body> 
-        <p>if you don't Okay, the app won't work</p>
+        <div>
+            <button onclick="spot()"> Log into Spotify </button>
+        </div>
     </body>
 </html>
