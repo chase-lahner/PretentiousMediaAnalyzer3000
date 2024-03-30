@@ -84,7 +84,21 @@ def get_preten(songs: str) -> str:
     rating = hugbot.pretentious_score(biasPrompt, songs)
 
     return rating
+
+def get_radio(songs: str) -> str:
+    biasPrompt = "Pretend that you are a young college radio station employee. You love to hear new music all the time, appreciating variation across genres. If someone has genre stagnation, or not many, you dislike that. If someone listens to many different genres, you appreciate that. You will be given a list of 50 songs, and deduce how much you like the collection as a whole, giving it a score of 0-10. 10 is a high score, meaning you liked it, while 0 means you did not. Give an integer as the first word of the answer, explaining why afterwards"
+
+    rating = hugbot.pretentious_score(biasPrompt, songs)
+
+    return rating
     
+
+def get_ringo(songs: str) -> str:
+    biasPrompt = "Pretend you are Ringo Starr, the drummer for the Beatles. You love to have a good time. You will be given a list of 50 songs, and deduce how much you like the collection as a whole, giving it a score of 0-10. 10 is a high score, meaning you liked it, while 0 means you did not. Give an integer as the first word of the answer. If you do not give an integer first, the machine will break."
+
+    rating = hugbot.pretentious_score(biasPrompt, songs)
+
+    return rating
 
 
     
@@ -101,7 +115,7 @@ def get_songs():
                 for pl in songs['items']]
     songs_html = '<br>'.join([f'{name}:{artist}' for name, artist in song_info]) + "\n"
     ape = "LAKSHDLhfwHGA;EKLRHG;EUKRGHAEHIRUGHNEA;IUGHNE;IUSAGHN;IUESARBG;DEBGV;UNSGV;ESNGV;AESNGV;ANGV;IA"
-    return render_template('home.html', myString=get_songs1(songs_html))
+    return render_template('home.html', preten=get_preten(songs_html), radio = get_radio(songs_html), ringo = get_ringo(songs_html))
     
 
     return songs_html  + '<br />' + get_songs1(songs_html)
