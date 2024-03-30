@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, jsonify, request, session, redirect, url_for
+from flask import Flask, jsonify, request, session, redirect, url_for,render_template
 
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth
@@ -23,8 +23,11 @@ sp_oauth = SpotifyOAuth(client_id=client_id,
                         show_dialog=True)
 sp = Spotify(auth_manager=sp_oauth)
 
+@app.route('/home')
+def homer():
+    return render_template('home.html')
 
-@app.route('/')
+@app.route('/ape')
 def home():
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
@@ -37,6 +40,11 @@ def homefr():
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
     return "welcome to my page <a href='/get_songs'>get top_songs</a>"
+
+@app.route('/callback')
+def callback():
+    sp_oauth.get_access_token(request.args['code'])
+    return redirect(url_for('homefr'))
 
 @app.route('/logout')
 def logout():
