@@ -7,6 +7,8 @@ from spotipy.oauth2 import SpotifyOAuth
 from spotipy.cache_handler import FlaskSessionCacheHandler
 import hugg
 
+hugbot = hugg.hugCommands("rorycavanmc@gmail.com", "wnVmBwCsUuThM2")
+
 
 
 
@@ -41,8 +43,9 @@ def homefr():
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
-    #return "welcome to my page <a href='/get_songs'>get top_songs</a>"    
-    return render_template("home.html")
+    ape = "hellodidididid"
+    #return "welcome to my page <a href='/get_songs'>get top_songs</a>"
+    return render_template('home.html', myString=ape)
 
 
 
@@ -68,9 +71,21 @@ def get_playlists():
 
 def get_songs1(songs: str) -> str:
     biasPrompt = "Pretend that you are a pretentious record store owner. You only like music that says something profound about the person who listens to it. The more obscure the artist, the better. This means that you prefer songs with fewer listens. You will be given a list of 50 songs, and deduce how much you like the collection as a whole, giving it a score of 0-10. 10 is a high score, meaning you liked it, while 0 means you did not. Be SUPER PRETENTIOUS. Give an integer as the first word of the answer. If you do not give an integer first, the machine will break."
-    hugbot = hugg.hugCommands("rorycavanmc@gmail.com", "wnVmBwCsUuThM2")
+   
     rating  = hugbot.pretentious_score(biasPrompt, songs)
+
+    
+
     return rating
+
+def get_preten(songs: str) -> str:
+    biasPrompt = "Pretend that you are a pretentious record store owner. You only like music that says something profound about the person who listens to it. The more obscure the artist, the better. This means that you prefer songs with fewer listens. You will be given a list of 50 songs, and deduce how much you like the collection as a whole, giving it a score of 0-10. 10 is a high score, meaning you liked it, while 0 means you did not. Be SUPER PRETENTIOUS. Give an integer as the first word of the answer. If you do not give an integer first, the machine will break."
+
+    rating = hugbot.pretentious_score(biasPrompt, songs)
+
+    return rating
+    
+
 
     
 
@@ -85,6 +100,8 @@ def get_songs():
     song_info = [(pl['name'], pl['artists'][0]['name'])
                 for pl in songs['items']]
     songs_html = '<br>'.join([f'{name}:{artist}' for name, artist in song_info]) + "\n"
+    ape = "LAKSHDLhfwHGA;EKLRHG;EUKRGHAEHIRUGHNEA;IUGHNE;IUSAGHN;IUESARBG;DEBGV;UNSGV;ESNGV;AESNGV;ANGV;IA"
+    return render_template('home.html', myString=get_songs1(songs_html))
     
 
     return songs_html  + '<br />' + get_songs1(songs_html)
