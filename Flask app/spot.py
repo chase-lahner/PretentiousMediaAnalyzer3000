@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = os.urandom(64)
 
 client_id = '0d17cf42d40a48bea802aef127087548'
 client_secret = '7afa8777c069421492d72d1d57de49a1'
-redirect_uri = 'http://localhost:5000/callback'
+redirect_uri = 'http://localhost:8080/callback'
 scope = 'playlist-read-private user-library-read user-top-read'
 
 cache_handler = FlaskSessionCacheHandler(session)
@@ -87,7 +87,8 @@ def get_songs():
     song_info = [(pl['name'], pl['artists'][0]['name'])
                 for pl in songs['items']]
     songs_html = '<br>'.join([f'{name}:{artist}' for name, artist in song_info]) + "\n"
-    
+    ape = "LAKSHDLhfwHGA;EKLRHG;EUKRGHAEHIRUGHNEA;IUGHNE;IUSAGHN;IUESARBG;DEBGV;UNSGV;ESNGV;AESNGV;ANGV;IA"
+    return render_template('home.html', myString=ape)
     
 
     return songs_html  + '<br />' + get_songs1(songs_html)
@@ -105,7 +106,7 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8080)
     
 
 
