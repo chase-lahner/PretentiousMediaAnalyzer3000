@@ -1,11 +1,15 @@
 import os
 
-from flask import Flask, jsonify, request, session, redirect, url_for
+from flask import Flask, jsonify, request, session, redirect, url_for, render_template
 
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth
 from spotipy.cache_handler import FlaskSessionCacheHandler
 import hugg
+import streamlit as st
+
+
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(64)
@@ -38,7 +42,8 @@ def homefr():
     if not sp_oauth.validate_token(cache_handler.get_cached_token()):
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
-    return "welcome to my page <a href='/get_songs'>get top_songs</a>"
+    #return "welcome to my page <a href='/get_songs'>get top_songs</a>"
+    return render_template("home.html")
 
 
 
