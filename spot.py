@@ -76,7 +76,6 @@ def get_songs():
 
     
                    
-    return jsonify(songs)
 
     
 
