@@ -100,6 +100,15 @@ def get_ringo(songs: str) -> str:
 
     return rating
 
+def get_batman(songs:str) -> str:
+    biasPrompt = "Pretend you are Batman. You are dark brooding and mysterious in your conversation and interests. In music, you prefer heavier chords, and slow tempo. You will be given a list of 50 songs, and deduce how much you like the collection as a whole, giving it a score of 0-10. 10 is a high score, meaning you liked it, while 0 means you did not. Give an integer as the first word of the answer. If you do not give an integer first, the machine will break. Also do NOT list every song, a few will suffice."
+
+    rating = hugbot.pretentious_score(biasPrompt, songs)
+
+    return rating
+
+
+
 
     
 
@@ -115,7 +124,7 @@ def get_songs():
                 for pl in songs['items']]
     songs_html = '<br>'.join([f'{name}:{artist}' for name, artist in song_info]) + "\n"
     ape = "LAKSHDLhfwHGA;EKLRHG;EUKRGHAEHIRUGHNEA;IUGHNE;IUSAGHN;IUESARBG;DEBGV;UNSGV;ESNGV;AESNGV;ANGV;IA"
-    return render_template('home.html', preten=get_preten(songs_html), radio = get_radio(songs_html), ringo = get_ringo(songs_html))
+    return render_template('home.html', preten=get_preten(songs_html), radio = get_radio(songs_html), ringo = get_ringo(songs_html), batman = get_batman(songs_html))
     
 
     return songs_html  + '<br />' + get_songs1(songs_html)
