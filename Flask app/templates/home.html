@@ -6,6 +6,51 @@
     <title>Foundation | Welcome</title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
   </head>
+  <style>
+    .card-container {
+        perspective: 1000px;
+        width: 192px;
+        height: 192px;
+        position: relative;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        transition: transform 2.6s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: rotateY(180deg); 
+    }
+
+    .card-front, .card-back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+    }
+    .card-front {
+        background-color: #3498db; 
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+    }
+
+    .card-back {
+        background-color: #2ecc71; 
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        transform: rotateY(180deg); 
+    }
+  </style>
   <Script>
     function blurb(){
       
@@ -25,7 +70,7 @@
 
     <div class="callout large primary">
       <div class="row column text-center">
-        <h1>Our Blog : GET SONGS : "welcome to my page <a href='/get_songs'>get top_songs</a>" </h1>
+        <h1>get your songs rated by our judges!! </h1>
       </div>
     </div>
 
@@ -33,62 +78,72 @@
       <div class="medium-8 columns">
         <div class="blog-post">
           <h3>Ringo Starr</h3>
-          <img src="/static/ringo.png" style="width:192px;height:192px;">
+          <div class="card-container">
+            <div class="card" id="flip-card">
+                <div class="card-front">
+                  <img src="/static/ringo.png" style="width:192px;height:192px;"> 
+                </div>
+                <div class="card-back">
+                    {{ringo_num}}
+                </div>
+            </div>
+          </div>
           <p>{{ ringo }} </p>
         </div>
 
         <div class="blog-post">
           <h3>College Radio Worker</h3>
-          <img src="/static/nicePerson.png" style="width:192px;height:192px;">
+          <div class="card-container">
+            <div class="card" id="flip-card">
+                <div class="card-front">
+                  <img src="/static/nicePerson.png" style="width:192px;height:192px;"> 
+                </div>
+                <div class="card-back">
+                    {{radio_num}}
+                </div>
+            </div>
+          </div>
           <p>{{ radio }}</p>
         </div>
 
         <div class="blog-post">
           <h3>Batman</h3>
-          <img src="/static/batman.png" style="width:192px;height:192px;">
+          <div class="card-container">
+            <div class="card" id="flip-card">
+                <div class="card-front">
+                  <img src="/static/batman.png" style="width:192px;height:192px;"> 
+                </div>
+                <div class="card-back">
+                    {{batman_num}}
+                </div>
+            </div>
+          </div>
           <p>{{ batman }}</p>
         </div>
 
         <div class="blog-post">
           <h3>Record Store Owner</h3>
-          <img src="/static/recordstoreguy.png" style="width:192px;height:192px;">
+          <div class="card-container">
+            <div class="card" id="flip-card">
+                <div class="card-front">
+                  <img src="/static/recordstoreguy.png" style="width:192px;height:192px;"> 
+                </div>
+                <div class="card-back">
+                    {{preten_num}}
+                </div>
+            </div>
+          </div>
           <p> {{ preten }}</p>
         </div>
       </div>
       <div class="medium-3 columns" data-sticky-container>
         <div class="sticky" data-sticky data-anchor="content">
-          <h4>Categories</h4>
-          <ul>
-            <li><a href="#">Skyler</a></li>
-            <li><a href="#">Jesse</a></li>
-            <li><a href="#">Mike</a></li>
-            <li><a href="#">Holly</a></li>
-          </ul>
+         
 
-          <h4>Authors</h4>
-          <ul>
-            <li><a href="#">Skyler</a></li>
-            <li><a href="#">Jesse</a></li>
-            <li><a href="#">Mike</a></li>
-            <li><a href="#">Holly</a></li>
-          </ul>
         </div>
       </div>
     </div>
 
-    <div class="row column">
-      <ul class="pagination" role="navigation" aria-label="Pagination">
-        <li class="disabled">Previous</li>
-        <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-        <li><a href="#" aria-label="Page 2">2</a></li>
-        <li><a href="#" aria-label="Page 3">3</a></li>
-        <li><a href="#" aria-label="Page 4">4</a></li>
-        <li class="ellipsis"></li>
-        <li><a href="#" aria-label="Page 12">12</a></li>
-        <li><a href="#" aria-label="Page 13">13</a></li>
-        <li><a href="#" aria-label="Next page">Next</a></li>
-      </ul>
-    </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
@@ -97,6 +152,3 @@
     </script>
   </body>
 </html>
-
-
-
